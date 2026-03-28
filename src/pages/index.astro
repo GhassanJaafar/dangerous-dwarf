@@ -1,17 +1,54 @@
 ---
-
+// This is where we will eventually fetch data from D1/Payload
+const projects = [
+  { title: "Glass Pavilion", category: "Residential", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c" },
+  { title: "Urban Monolith", category: "Commercial", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" },
+  { title: "Concrete Silence", category: "Cultural", image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742" },
+];
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Architect Portfolio | Ghassan</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-stone-50 text-stone-900 font-sans">
+		<nav class="p-8 flex justify-between items-center border-b border-stone-200">
+			<h1 class="text-xl font-bold tracking-tighter uppercase">Ghassan Architect</h1>
+			<div class="space-x-6 text-sm uppercase tracking-widest">
+				<a href="#" class="hover:text-stone-500">Work</a>
+				<a href="#" class="hover:text-stone-500">About</a>
+			</div>
+		</nav>
+
+		<main class="max-w-7xl mx-auto p-8">
+			<header class="py-20">
+				<p class="text-4xl md:text-6xl font-light leading-tight max-w-4xl">
+					Designing spaces that bridge the gap between <span class="italic font-serif">nature</span> and <span class="font-medium text-stone-400">brutalism</span>.
+				</p>
+			</header>
+
+			<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+				{projects.map((project) => (
+					<div class="group cursor-pointer">
+						<div class="overflow-hidden bg-stone-200 mb-4 aspect-[4/5]">
+							<img 
+								src={project.image} 
+								alt={project.title} 
+								class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+							/>
+						</div>
+						<h3 class="text-sm font-bold uppercase tracking-widest">{project.title}</h3>
+						<p class="text-xs text-stone-400 uppercase">{project.category}</p>
+					</div>
+				))}
+			</section>
+		</main>
+
+		<footer class="p-20 text-center text-xs text-stone-400 uppercase tracking-widest">
+			&copy; 2026 Ghassan Architect — Built with Astro & Cloudflare
+		</footer>
 	</body>
 </html>
